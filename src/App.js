@@ -93,11 +93,13 @@ function App() {
                 </div>
             </div>
             <h1 className="pageHeader">Get latest NEWS within seconds</h1>
-            <div className="searchBox">
+            <div
+                className={`searchBox ${!data.allNews.length && "fullHeight"}`}
+            >
                 <form className="searchForm" onSubmit={handleSearch}>
                     <input
                         className="searchField"
-                        placeholder="Enter your search query here"
+                        placeholder="Search for...."
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                     />
@@ -108,11 +110,11 @@ function App() {
                     >
                         {loading ? (
                             <CircularProgress
-                                size={30}
+                                size={25}
                                 style={{ color: "#fff" }}
                             />
                         ) : (
-                            "Search News"
+                            "Search"
                         )}
                     </Button>
                 </form>
@@ -130,7 +132,7 @@ function App() {
                             <span style={{ color: "#dd963e" }}>
                                 {data.totalResults}
                             </span>{" "}
-                            results for keyword "{apiQuery || query}" -
+                            results for keyword "{apiQuery || query}"
                         </h2>
                     )}
                     <div className="newsCards">
@@ -141,7 +143,7 @@ function App() {
                 </div>
             )}
 
-            {data.allNews.length > 0 && (
+            {data.allNews.length > 0 && !loading && (
                 <div className="navigate">
                     <Button
                         variant="contained"
@@ -152,8 +154,7 @@ function App() {
                         <ArrowBackIosIcon />
                     </Button>
                     <span className="text">
-                        Showing page <b>{pageNumber + 1}</b> of{" "}
-                        {data.totalPages}
+                        Page <b>{pageNumber + 1}</b> of {data.totalPages}
                     </span>
                     <Button
                         variant="contained"
