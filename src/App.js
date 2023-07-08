@@ -28,7 +28,7 @@ function App() {
             .then((result) => {
                 setLoading(false);
                 // setNewsData(result.data.hits);
-                console.log("results", result);
+                // console.log("results", result);
                 setData({
                     allNews: result.data.hits,
                     totalResults: result.data.nbHits,
@@ -51,7 +51,7 @@ function App() {
                     result.data.nbPages
                 );
 
-                console.log(result.data.hits);
+                // console.log(result.data.hits);
             })
             .catch((err) => {
                 setLoading(false);

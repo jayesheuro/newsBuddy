@@ -22,10 +22,10 @@ const NewsDetail = () => {
         const getData = async () => {
             setLoading(true);
             await axios
-                .get(`http://hn.algolia.com/api/v1/items/${objectID}`)
+                .get(`https://hn.algolia.com/api/v1/items/${objectID}`)
                 .then((result) => {
                     setLoading(false);
-                    console.log(result.data);
+                    // console.log(result.data);
                     // setNewsDetail(result.data);
                     setData({
                         title: result.data.title
